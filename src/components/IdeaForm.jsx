@@ -45,7 +45,8 @@ const IdeaForm = ({ user, setUser }) => {
     }
 
     try {
-      const res = await axios.post('http://localhost:5000/api/evaluate', formData);
+      const API = process.env.REACT_APP_API_URL;
+const res = await axios.post(`${API}/api/evaluate`, formData);
 
       if (!res.data.feedback) {
         setError('No feedback received. Please try again.');

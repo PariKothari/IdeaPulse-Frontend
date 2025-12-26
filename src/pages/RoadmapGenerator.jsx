@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './RoadmapGenerator.css'; //  external CSS
+import './RoadmapGenerator.css'; // external CSS
 
 const RoadmapGen = () => {
   const [title, setTitle] = useState('');
@@ -14,10 +14,12 @@ const RoadmapGen = () => {
     if (!title || !description) return;
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:5000/api/roadmap-gen', {
+      const API = process.env.REACT_APP_API_URL;
+      const res = await axios.post(`${API}/api/roadmap-gen`, {
         title,
         description,
       });
+
       navigate('/results', {
         state: {
           feedback: res.data.roadmap,
@@ -26,7 +28,7 @@ const RoadmapGen = () => {
         },
       });
     } catch (err) {
-      console.error(err);
+      console.error('Roadmap generation failed:', err);
     } finally {
       setLoading(false);
     }

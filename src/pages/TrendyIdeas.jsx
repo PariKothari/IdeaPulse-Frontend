@@ -10,10 +10,11 @@ const TrendyIdeas = () => {
   useEffect(() => {
     const fetchIdeas = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/trendy');
+        const API = process.env.REACT_APP_API_URL;
+        const res = await axios.get(`${API}/api/trendy`);
         setIdeas(res.data.ideas || []);
       } catch (err) {
-        console.error(err);
+        console.error('Failed to fetch trendy ideas:', err);
       } finally {
         setLoading(false);
       }

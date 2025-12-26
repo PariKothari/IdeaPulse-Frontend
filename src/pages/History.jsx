@@ -18,7 +18,8 @@ const History = ({ userId: propUserId }) => {
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/history/${userId}`);
+        const API = process.env.REACT_APP_API_URL;
+        const res = await axios.get(`${API}/api/history/${userId}`);
         setIdeas(res.data.ideas || []);
       } catch (err) {
         console.error('Failed to fetch history:', err);
@@ -36,7 +37,8 @@ const History = ({ userId: propUserId }) => {
   const handleDelete = async (idea) => {
     if (!window.confirm(`Delete "${idea.title}"?`)) return;
     try {
-      await axios.delete(`http://localhost:5000/api/history/${idea._id}`);
+      const API = process.env.REACT_APP_API_URL;
+      await axios.delete(`${API}/api/history/${idea._id}`);
       const newIdeas = ideas.filter((i) => i._id !== idea._id);
       setIdeas(newIdeas);
     } catch (err) {
@@ -62,7 +64,8 @@ const History = ({ userId: propUserId }) => {
     if (alreadySelected) {
       setCompareQueue(compareQueue.filter((i) => i._id !== idea._id));
     } else {
-      if (compareQueue.length === 2) return alert('You can only compare two ideas at a time');
+      if (compareQueue.length === 2)
+        return alert('You can only compare two ideas at a time');
       setCompareQueue([...compareQueue, idea]);
     }
   };
@@ -82,7 +85,10 @@ const History = ({ userId: propUserId }) => {
 
       {/* Buttons centered */}
       <div className="top-actions">
-        <button onClick={() => setCompareMode(!compareMode)} className="button-primary">
+        <button
+          onClick={() => setCompareMode(!compareMode)}
+          className="button-primary"
+        >
           {compareMode ? 'Cancel Compare' : 'Compare Ideas'}
         </button>
       </div>
@@ -102,7 +108,9 @@ const History = ({ userId: propUserId }) => {
             />
           ))
         ) : (
-          <p className="empty-message">{loading ? 'Loading...' : 'No ideas found.'}</p>
+          <p className="empty-message">
+            {loading ? 'Loading...' : 'No ideas found.'}
+          </p>
         )}
       </div>
 
@@ -115,11 +123,16 @@ const History = ({ userId: propUserId }) => {
             <div className="popup-actions">
               <button
                 className="button-primary"
-                onClick={() => navigate('/compare', { state: { ideas: compareQueue } })}
+                onClick={() =>
+                  navigate('/compare', { state: { ideas: compareQueue } })
+                }
               >
                 Yes, Compare
               </button>
-              <button className="button-secondary" onClick={() => setCompareQueue([])}>
+              <button
+                className="button-secondary"
+                onClick={() => setCompareQueue([])}
+              >
                 Cancel
               </button>
             </div>

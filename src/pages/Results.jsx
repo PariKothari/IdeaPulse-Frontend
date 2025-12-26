@@ -6,7 +6,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { v4 as uuidv4 } from 'uuid';
-import './Results.css';   //  external CSS file
+import './Results.css';   // external CSS file
 
 const Results = ({ user: userProp }) => {
   const location = useLocation();
@@ -21,7 +21,7 @@ const Results = ({ user: userProp }) => {
   const ideaMonetization = location.state?.monetization || '';
   const includeMarket = location.state?.includeMarket || false;
 
-  //  Detect modes
+  // Detect modes
   const isIdeaGen = ideaTitle === 'Generated Ideas';
   const isRoadmapGen = ideaTitle === 'Generated Roadmap';
   const isCompare = location.state?.compare || false;
@@ -46,7 +46,8 @@ const Results = ({ user: userProp }) => {
     };
 
     try {
-      await axios.post('http://localhost:5000/api/history', payload);
+      const API = process.env.REACT_APP_API_URL;
+      await axios.post(`${API}/api/history`, payload);
       toast.success('Saved to Vault!');
     } catch (err) {
       console.error(err);
@@ -70,7 +71,7 @@ const Results = ({ user: userProp }) => {
     );
   }
 
-  //  Parse ideas for IdeaGen
+  // Parse ideas for IdeaGen
   const parsedIdeas = isIdeaGen
     ? feedback
         .split(/\n(?=\d+\.\s|\*\*Title|\- Idea|\#\#)/)
@@ -79,7 +80,7 @@ const Results = ({ user: userProp }) => {
         .slice(0, 5)
     : [];
 
-  //  Extract overall score from feedback
+  // Extract overall score from feedback
   const extractOverall = (text) => {
     const match = text?.match(/Overall Score.*?(\d{1,2})\/10/i);
     return match ? parseInt(match[1], 10) : null;
@@ -87,7 +88,7 @@ const Results = ({ user: userProp }) => {
 
   const overallScore = !isIdeaGen && !isRoadmapGen && !isCompare ? extractOverall(feedback) : null;
 
-  //  Compare Mode scoring
+  // Compare Mode scoring
   let scoreA = 0, scoreB = 0, winner = '';
   if (isCompare && ideas.length === 2) {
     scoreA = extractOverall(ideas[0].feedback);
@@ -140,7 +141,10 @@ const Results = ({ user: userProp }) => {
               {ideas.map((idea, idx) => {
                 const score = idx === 0 ? scoreA : scoreB;
                 return (
-                  <div key={idx} className={`compare-card ${score === Math.max(scoreA, scoreB) ? 'winner' : ''}`}>
+                  <div
+                    key={idx}
+                    className={`compare-card ${score === Math.max(scoreA, scoreB) ? 'winner' : ''}`}
+                  >
                     <h3 className="idea-title">{idea.title}</h3>
                     <div className="idea-text">
                       <ReactMarkdown>{idea.feedback}</ReactMarkdown>

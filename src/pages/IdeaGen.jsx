@@ -11,7 +11,9 @@ const IdeaGen = () => {
     if (!prompt) return;
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:5000/api/idea-gen', { prompt });
+      const API = process.env.REACT_APP_API_URL;
+      const res = await axios.post(`${API}/api/idea-gen`, { prompt });
+
       navigate('/results', {
         state: {
           feedback: res.data.output,
@@ -20,7 +22,7 @@ const IdeaGen = () => {
         },
       });
     } catch (err) {
-      console.error(err);
+      console.error('Idea generation failed:', err);
     } finally {
       setLoading(false);
     }
@@ -28,7 +30,7 @@ const IdeaGen = () => {
 
   return (
     <>
-      {/*  Embedded CSS for responsiveness */}
+      {/* Embedded CSS for responsiveness */}
       <style>{`
         .idea-page {
           background-color: #f7f7f7;
@@ -47,7 +49,7 @@ const IdeaGen = () => {
           font-weight: 700;
           text-align: center;
           margin-bottom: 2rem;
-          color: #111; /*  dark text ensures visibility */
+          color: #111;
         }
 
         .idea-input {
@@ -91,14 +93,12 @@ const IdeaGen = () => {
           transform: scale(0.98);
         }
 
-        /* Tablet */
         @media (max-width: 768px) {
           .idea-heading { font-size: 1.8rem; }
           .idea-input { max-width: 90%; font-size: 0.95rem; padding: 0.9rem; }
           .idea-button { font-size: 0.95rem; padding: 0.7rem 1.4rem; }
         }
 
-        /* Mobile */
         @media (max-width: 480px) {
           .idea-page { padding: 1.2rem; }
           .idea-heading { font-size: 1.5rem; margin-bottom: 1.5rem; }
@@ -108,7 +108,6 @@ const IdeaGen = () => {
       `}</style>
 
       <div className="idea-page">
-        {/*  Heading always visible */}
         <h1 className="idea-heading">💡 Idea Generator</h1>
 
         <textarea
