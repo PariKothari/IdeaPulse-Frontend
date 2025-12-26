@@ -1,6 +1,4 @@
-Got it, Pari. I’ll rewrite the README drafts in a plain, human‑style format, no symbols or markdown headings. I’ll also add your actual Vercel domain where needed.
 
-README for IdeaPulse Frontend
 IdeaPulse Frontend
 IdeaPulse is a full stack web application that helps users generate, evaluate, and compare startup ideas using AI.
 This repository contains the React frontend, deployed on Vercel.
