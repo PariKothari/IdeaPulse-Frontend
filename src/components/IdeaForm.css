@@ -1,0 +1,105 @@
+.idea-form {
+  max-width: 500px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Inputs */
+.idea-input,
+.idea-textarea,
+.idea-checkbox {
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 1rem;
+}
+
+.idea-textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* Checkbox */
+.idea-checkbox-label {
+  font-size: 1rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.idea-checkbox {
+  accent-color: #111;
+  width: 18px;
+  height: 18px;
+}
+
+/* Button */
+.idea-button {
+  padding: 1rem;
+  background-color: #111;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.idea-button:hover {
+  background-color: #333;
+}
+
+/* Error */
+.idea-error {
+  color: red;
+  font-weight: 500;
+}
+
+/* ------------------- Responsive Tweaks ------------------- */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .idea-form {
+    max-width: 90%;
+    margin: 1.5rem auto;
+  }
+  .idea-input,
+  .idea-textarea {
+    font-size: 0.95rem;
+    padding: 0.9rem;
+  }
+  .idea-button {
+    font-size: 0.95rem;
+    padding: 0.9rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .idea-form {
+    max-width: 100%;
+    margin: 1rem auto;
+    gap: 0.8rem;
+  }
+  .idea-input,
+  .idea-textarea {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+  .idea-textarea {
+    min-height: 100px;
+  }
+  .idea-checkbox-label {
+    font-size: 0.9rem;
+  }
+  .idea-button {
+    width: 100%; /*  full-width button for easy tapping */
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+}

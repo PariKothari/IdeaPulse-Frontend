@@ -1,0 +1,101 @@
+/* Card styling */
+.idea-card {
+  background-color: #fff;
+  padding: 0.75rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* keeps actions at bottom */
+  gap: 0.75rem;
+  transition: box-shadow 0.3s ease;
+
+  /* ✅ critical layout fixes */
+  width: 100%;           /* fills grid cell */
+  max-width: 320px;      /* optional cap for card width */
+  min-height: 280px;     /* ensures consistent row height */
+  height: 100%;          /* stretches to match tallest card in row */
+  box-sizing: border-box;
+}
+
+.idea-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.idea-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.idea-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.idea-score {
+  background-color: #d1fae5;
+  color: #065f46;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-weight: 600;
+}
+
+.idea-date {
+  font-weight: 500;
+}
+
+.idea-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.idea-tag {
+  font-size: 0.75rem;
+  background-color: #f3f4f6;
+  color: #374151;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+}
+
+.idea-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto; /* pushes actions to bottom */
+}
+
+.action-button {
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.view-button {
+  background-color: #000;
+  color: #fff;
+}
+
+.view-button:hover {
+  background-color: #1a1a1a;
+}
+
+.delete-button {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.delete-button:hover {
+  background-color: #fecaca;
+}
+
+.compare-checkbox {
+  transform: scale(1.2);
+  cursor: pointer;
+}

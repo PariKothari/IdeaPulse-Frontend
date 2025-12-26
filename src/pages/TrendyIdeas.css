@@ -1,0 +1,55 @@
+.trendy-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  animation: fadeInUp 0.8s ease-out; /*  cinematic entrance */
+}
+
+.trendy-heading {
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, #ef4444, #f97316, #facc15);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glowPulse 2s infinite; /*  glowing wow effect */
+}
+
+.trendy-loading,
+.trendy-empty {
+  text-align: center;
+  color: #4b5563;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  animation: fadeIn 1s ease-in;
+}
+
+/*  Cinematic keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowPulse {
+  0% {
+    text-shadow: 0 0 5px rgba(239, 68, 68, 0.6);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(249, 115, 22, 0.8);
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(250, 204, 21, 0.6);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
