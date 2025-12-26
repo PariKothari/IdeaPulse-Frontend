@@ -2,8 +2,7 @@
 IdeaPulse Frontend
 IdeaPulse is a full stack web application that helps users generate, evaluate, and compare startup ideas using AI.
 This repository contains the React frontend, deployed on Vercel.
-Live Demo
-https://ideapulse-frontend.vercel.app
+LINK:https://idea-pulse-frontend.vercel.app/
 Features
 - Google authentication with Firebase
 - AI idea generation powered by the backend
