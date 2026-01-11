@@ -38,10 +38,10 @@ const Compare = () => {
 
   const winner =
     scoreA > scoreB
-      ? `🏆 ${ideaA.title} wins overall (${scoreA}/10 vs ${scoreB}/10)`
+      ? ` ${ideaA.title} wins overall (${scoreA}/10 vs ${scoreB}/10)`
       : scoreB > scoreA
-      ? `🏆 ${ideaB.title} wins overall (${scoreB}/10 vs ${scoreA}/10)`
-      : `🤝 Both ideas are equally strong (${scoreA}/10 each)`;
+      ? ` ${ideaB.title} wins overall (${scoreB}/10 vs ${scoreA}/10)`
+      : ` Both ideas are equally strong (${scoreA}/10 each)`;
 
   return (
     <div className="compare-container">

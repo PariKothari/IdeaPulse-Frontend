@@ -24,7 +24,7 @@ const TrendyIdeas = () => {
 
   return (
     <div className="trendy-container">
-      <h1 className="trendy-heading">🔥 Trendy Ideas</h1>
+      <h1 className="trendy-heading"> Trendy Ideas</h1>
       {loading ? (
         <p className="trendy-loading">Loading trendy ideas...</p>
       ) : ideas.length > 0 ? (

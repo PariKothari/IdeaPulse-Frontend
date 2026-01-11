@@ -36,7 +36,7 @@ const RoadmapGen = () => {
 
   return (
     <div className="roadmap-page">
-      <h1 className="roadmap-heading">🛣️ Roadmap Generator</h1>
+      <h1 className="roadmap-heading">Roadmap Generator</h1>
       <input
         className="roadmap-input"
         placeholder="Startup Title"

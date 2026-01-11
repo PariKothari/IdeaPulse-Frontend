@@ -95,10 +95,10 @@ const Results = ({ user: userProp }) => {
     scoreB = extractOverall(ideas[1].feedback);
     winner =
       scoreA > scoreB
-        ? `🏆 ${ideas[0].title} wins overall (${scoreA}/10 vs ${scoreB}/10)`
+        ? ` ${ideas[0].title} wins overall (${scoreA}/10 vs ${scoreB}/10)`
         : scoreB > scoreA
-        ? `🏆 ${ideas[1].title} wins overall (${scoreB}/10 vs ${scoreA}/10)`
-        : `🤝 Both ideas are equally strong (${scoreA}/10 each)`;
+        ? ` ${ideas[1].title} wins overall (${scoreB}/10 vs ${scoreA}/10)`
+        : ` Both ideas are equally strong (${scoreA}/10 each)`;
   }
 
   return (
@@ -163,7 +163,7 @@ const Results = ({ user: userProp }) => {
           <div className="idea-text">
             <ReactMarkdown>{feedback}</ReactMarkdown>
             {overallScore !== null && (
-              <p className="overall-score">⭐ Overall Score: {overallScore}/10</p>
+              <p className="overall-score"> Overall Score: {overallScore}/10</p>
             )}
             {overallScore !== null && (
               <div className="score-bar-container">

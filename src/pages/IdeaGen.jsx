@@ -108,7 +108,7 @@ const IdeaGen = () => {
       `}</style>
 
       <div className="idea-page">
-        <h1 className="idea-heading">💡 Idea Generator</h1>
+        <h1 className="idea-heading"> Idea Generator</h1>
 
         <textarea
           className="idea-input"
